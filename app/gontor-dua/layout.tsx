@@ -1,7 +1,7 @@
 import Index from "@/components/Header/Main";
 import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
+import { Provider } from "react-wrap-balancer";
 
 export const metadata = {
   title: "Drama Arena 598 - Gontor Dua",
@@ -24,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Index />
-        {children}
+        <Provider>
+          <Index />
+          {children}
+        </Provider>
       </body>
     </html>
   );
