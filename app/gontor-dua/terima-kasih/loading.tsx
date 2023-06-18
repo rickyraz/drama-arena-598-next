@@ -2,8 +2,8 @@ import React from "react";
 
 // import { Skeleton } from "@/components/ui/skeleton";
 
-function GontorDuaLoading() {
+function TerimaKasihLoading() {
   return <div>Loading...</div>;
 }
 
-export default GontorDuaLoading;
+export default TerimaKasihLoading;

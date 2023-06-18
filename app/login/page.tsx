@@ -60,7 +60,11 @@ function Login() {
         </div>
         <div className="flex justify-center pt-6">
           <div className="grid w-full max-w-[287px] items-center gap-2">
-            <Button variant="default" className="h-12 text-sm bg-[#0FA383] ">
+            <Button
+              type="submit"
+              variant="default"
+              className="h-12 text-sm bg-[#0FA383] hover:bg-[#0b8066]"
+            >
               <span className="pl-1 text-white">Masuk</span>
             </Button>
           </div>

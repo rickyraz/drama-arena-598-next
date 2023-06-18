@@ -1,15 +1,24 @@
+"use client";
 import React from "react";
 import { Edit } from "lucide-react";
 import Image from "next/image";
 import Index from "@/components/Header/Main";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Balancer from "react-wrap-balancer";
 
 function Penilaianku() {
   return (
     <>
       <Index />
-      <section className="bg-[#041F14] min-h-screen">
+      <section className="min-h-screen bg-[#041F14]">
         <Penilai />
-        <Nilaiku acara="Tari Reog Ponorogo" />
+        <EditNilai namaAcara="Tari Reog Ponorogo" />
         <Nilaiku acara="Tari Topeng Ireng" />
       </section>
     </>
@@ -21,8 +30,31 @@ export default Penilaianku;
 function Penilai() {
   return (
     <div className="pt-9">
-      <h2 className="font-semibold text-[#0FA383] px-6 text-xl">Penilaianku</h2>
+      <h2 className="px-6 text-xl font-semibold text-[#0FA383]">Penilaianku</h2>
     </div>
+  );
+}
+
+type EditNilaiProps = {
+  namaAcara: string;
+};
+
+// eslint-disable-next-line no-unused-vars
+function EditNilai({ namaAcara }: EditNilaiProps) {
+  return (
+    <Dialog>
+      <DialogTrigger className="w-full">
+        <Nilaiku acara={namaAcara} />
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader className="pt-6">
+          <DialogTitle className="text-center">
+            <Balancer>Edit Nilai {namaAcara}</Balancer>
+          </DialogTitle>
+          <div></div>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }
 
@@ -32,10 +64,10 @@ interface Nilai {
 
 function Nilaiku({ acara }: Nilai) {
   return (
-    <div className="pt-6 px-6 ">
-      <div className="border rounded-lg bg-[#D2FFEC]">
+    <div className="px-6 pt-6 text-left">
+      <div className="rounded-lg border bg-[#D2FFEC]">
         <div className="flex items-center justify-between px-3">
-          <p className="font-semibold text-[#53AA97] py-3 text-base">{acara}</p>
+          <p className="py-3 text-base font-semibold text-[#53AA97]">{acara}</p>
           <Edit className="h-4 w-4 stroke-2" />
         </div>
         <div className="flex items-center px-3">
@@ -46,12 +78,11 @@ function Nilaiku({ acara }: Nilai) {
             height={29.98}
             className="stroke-[#07462B]"
           />
-          <span className=" font-semibold ml-1 text-xl">9.1</span>
+          <span className=" ml-1 text-xl font-semibold">9.1</span>
         </div>
-        <p className="px-3 pt-3 line-clamp-3 text-sm mb-5 text-[#0D493C]">
+        <p className="mb-5 line-clamp-3 px-3 pt-3 text-sm text-[#0D493C]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod
-          harum ipsa nihil voluptas, impedit exercitationem neque quidem odit
-          adipisci corrupti consequuntur! Similique, quasi dolorum.
+          harum ipsa nihil voluptas, impedit exercitationem
         </p>
       </div>
     </div>

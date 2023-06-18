@@ -13,7 +13,7 @@ function Acara() {
   return (
     <>
       <Index />
-      <section className="bg-[#041F14] min-h-screen">
+      <section className="min-h-screen bg-[#041F14]">
         <Catatan />
         <Filtering />
         <Nilai />
@@ -27,9 +27,9 @@ export default Acara;
 
 function Filtering() {
   return (
-    <div className="pt-9 px-6 ">
+    <div className="px-6 pt-9 ">
       <Select>
-        <SelectTrigger className="w-[180px] h-12 border-[#CDFFEA] border text-white font-medium">
+        <SelectTrigger className="h-12 w-[180px] border border-[#CDFFEA] font-medium text-white">
           <SelectValue
             placeholder="Tari Tradisional"
             defaultValue="tradisional"
@@ -47,17 +47,17 @@ function Filtering() {
 
 function Nilai() {
   return (
-    <div className="pt-9 px-6 ">
-      <div className="border rounded-lg bg-[#D2FFEC]">
-        <p className="font-semibold text-[#0FA383] py-3 ml-3 text-base">
+    <div className="px-6 pt-9 ">
+      <div className="rounded-lg border bg-[#D2FFEC]">
+        <p className="ml-3 py-3 text-base font-semibold text-[#0FA383]">
           Tari Reog Ponorogo
         </p>
         <div>
-          <div className="bg-[#83B5A0] aspect-[3/2] rounded-lg mx-3">
+          <div className="mx-3 aspect-[3/2] rounded-lg bg-[#83B5A0]">
             gambar
           </div>
         </div>
-        <div className="flex justify-center text-sm my-2 bg-[#BBF0DA]/60 mx-6 text-[#55BFA8]">
+        <div className="mx-6 my-2 flex justify-center bg-[#BBF0DA]/60 text-sm text-[#55BFA8]">
           klik disini untuk menilai acara
         </div>
       </div>
