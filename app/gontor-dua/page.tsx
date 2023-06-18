@@ -118,7 +118,7 @@ function BeliMerchendise() {
       <h2 className="text-xl font-semibold text-[#0FA383]">
         <Balancer>Pesan Merchendise/Rekaman Kaset DA 598</Balancer>
       </h2>
-      <div className="mt-2 aspect-square w-full rounded-lg bg-white">sda</div>
+      <div className="mt-2 aspect-[3/2] w-full rounded-lg bg-white">sda</div>
       <div className="relative flex w-full  pt-3">
         <PopUpMerchendise />
       </div>

@@ -9,19 +9,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Index from "@/components/Header/Main";
 import Image from "next/image";
 import React from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Balancer } from "react-wrap-balancer";
 
 function Detail() {
   return (
-    <div className="min-h-screen bg-[#041F14]">
-      <Details />
-      <Voting />
-      <TabsComponent />
-    </div>
+    <>
+      <Index />
+      <section className="min-h-screen bg-[#041F14]">
+        <Details />
+        <Voting />
+        <TabsComponent />
+      </section>
+    </>
   );
 }
 
@@ -41,12 +44,6 @@ function Details() {
       <div className="mt-3 aspect-[3/2]  w-full rounded-lg bg-[#83B5A0]">
         asdasd
       </div>
-      <p className="pt-3 text-sm text-white">
-        <Balancer>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam neque
-          minima sit veniam voluptates placeat voluptate, provident,
-        </Balancer>
-      </p>
     </div>
   );
 }
@@ -56,12 +53,18 @@ function Voting() {
     <div className="px-6 pt-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <Image src="/star.svg" alt="star" width={30} height={30} />
           <Select>
-            <SelectTrigger className="ml-2 h-9 w-[100px] bg-[#CDFFEA] text-center text-lg font-medium text-[#1BA88A]">
-              <SelectValue placeholder="1-10" />
+            <SelectTrigger className="w-full bg-[#CDFFEA] text-center text-lg font-medium text-[#1BA88A]">
+              <Image
+                src="/star.svg"
+                alt="star"
+                width={24}
+                height={24}
+                className="mr-2"
+              />
+              <SelectValue placeholder="1-10 " className="px-6 py-2 pl-2" />
             </SelectTrigger>
-            <SelectContent className="w-[100px] text-center">
+            <SelectContent className="text-center">
               <SelectItem value="1">1</SelectItem>
               <SelectItem value="2">2</SelectItem>
               <SelectItem value="3">3</SelectItem>
@@ -78,7 +81,7 @@ function Voting() {
         <PopUpText>
           <div className="flex rounded-lg border border-[#86E7BE] px-4 py-2">
             <Edit3 className="stroke-[#86E7BE]" />
-            <p className="text-[#86E7BE]">Beri Catatan</p>
+            <p className="ml-2 text-[#86E7BE]">Catatan</p>
           </div>
         </PopUpText>
       </div>
