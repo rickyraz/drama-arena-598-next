@@ -1,34 +1,22 @@
-import Index from "@/components/Header/Main";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+/* eslint-disable no-undef */
+
 import { Provider } from "react-wrap-balancer";
 
 export const metadata = {
   title: "Drama Arena 598 - Gontor Dua",
   description: "Pagelaran seni Drama Arena 598 di Darussalam Gontor Kampus 2",
-  themeColor: "#ffffff",
-  manifest: "/favicon/site.webmanifest",
-  maskIcon: "/favicon/safari-pinned-tab.svg",
-  icons: {
-    icon: "/favicon/favicon.ico",
-    shortcut: "/favicon/favicon-16x16.png",
-    apple: "/favicon/apple-touch-icon.png",
-  },
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface GontoDuaProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function GontorDuaLayout({ children }: GontoDuaProps) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Provider>
-          <Index />
-          {children}
-        </Provider>
-      </body>
-    </html>
+    <div>
+      <main>
+        <Provider>{children}</Provider>
+      </main>
+    </div>
   );
 }

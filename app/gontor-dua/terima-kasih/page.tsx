@@ -1,7 +1,15 @@
 import React from "react";
+import Index from "@/components/Header/Main";
 
 function TerimaKasih() {
-  return <div>TerimaKasih</div>;
+  return (
+    <>
+      <Index />
+      <section>
+        <p>terima kasih</p>
+      </section>
+    </>
+  );
 }
 
 export default TerimaKasih;

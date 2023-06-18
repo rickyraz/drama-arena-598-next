@@ -1,25 +1,29 @@
-import { Button } from "@/components/ui/button";
+// import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import Index from "@/components/Header/Main";
 
 function GontorDua() {
   return (
-    <section className="bg-[#041F14] min-h-min">
-      <Hasil />
-      <AcaraFavorit />
-      <DilihatOleh />
-      <BeliMerchendise />
-    </section>
+    <>
+      <Index />
+      <section className="bg-[#041F14] min-h-min">
+        <Hasil />
+        <AcaraFavorit />
+        <DilihatOleh />
+        <BeliMerchendise />
+      </section>
+    </>
   );
 }
 
 export default GontorDua;
 
-function Hasil() {
+export function Hasil() {
   return (
     <div className="pt-9">
       <h2 className="font-semibold text-[#0FA383] px-6 text-xl">Hasil Acara</h2>
-      <div className=" grid grid-rows-2 grid-cols-5 grid-flow-col gap-3 px-6 place-items-stretch pt-2">
+      <div className="grid grid-rows-2 grid-cols-5 grid-flow-col gap-3 px-6 place-items-stretch pt-2">
         <div className="bg-[#D2FFED] row-span-2 col-span-3 py-8 rounded-lg">
           <h3 className="flex justify-center capitalize font-semibold text-[#53AA97]">
             rata-rata acara
@@ -51,6 +55,18 @@ function Hasil() {
     </div>
   );
 }
+
+// GK BISA DIPANGGIL ke loading.tsz
+// Hasil.Skeleton = function HasilSkeleton() {
+//   return (
+//     <div className="p-4">
+//       <div className="space-y-3">
+//         <Skeleton className="h-5 w-2/5" />
+//         <Skeleton className="h-4 w-4/5" />
+//       </div>
+//     </div>
+//   );
+// };
 
 function AcaraFavorit() {
   return (

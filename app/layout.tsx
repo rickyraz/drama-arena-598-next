@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
 import "./globals.css";
 import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,14 +19,21 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: RootProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={(cn("antialiased"), inter.className)}>
+        <NextTopLoader
+          color="#0FA383"
+          crawlSpeed={125}
+          initialPosition={0.02}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -7,15 +7,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Catatan from "@/components/Catatan";
+import Index from "@/components/Header/Main";
 
 function Acara() {
   return (
-    <section className="bg-[#041F14] min-h-screen">
-      <Catatan />
-      <Filtering />
-      <Nilai />
-      <Nilai />
-    </section>
+    <>
+      <Index />
+      <section className="bg-[#041F14] min-h-screen">
+        <Catatan />
+        <Filtering />
+        <Nilai />
+        <Nilai />
+      </section>
+    </>
   );
 }
 

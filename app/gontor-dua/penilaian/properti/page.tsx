@@ -1,30 +1,43 @@
+/* eslint-disable no-redeclare */
 import React from "react";
 import Image from "next/image";
 import Catatan from "@/components/Catatan";
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import { MessageSquare } from "lucide-react";
+
+import Index from "@/components/Header/Main";
 
 function Property() {
   return (
-    <div className="bg-[#041F14] min-h-screen">
-      <Catatan />
-      <Nilai />
-    </div>
+    <>
+      <Index />
+      <section className="bg-[#041F14] min-h-screen pb-20">
+        <Catatan />
+        <Nilai property="Background Panggung" />
+        <Nilai property="Kebersihan" />
+        <Nilai property="Makanan" />
+      </section>
+    </>
   );
 }
 
 export default Property;
 
-function Nilai() {
+interface Nilai {
+  property: string;
+}
+
+function Nilai({ property }: Nilai) {
   return (
     <div className="pt-9 px-6 ">
       <div className="border rounded-lg bg-[#D2FFEC]">
         <p className="font-semibold text-[#0FA383] py-3 ml-3 text-base">
-          Panggung
+          {property}
         </p>
         <div>
-          <ul className="flex justify-between mx-3">
+          <ul className="flex justify-between mx-2">
             <li>
               <Image src="/emoji/xx.svg" alt="XD" width={32} height={32} />
             </li>
@@ -48,9 +61,12 @@ function Nilai() {
             variant="default"
             className="bg-[#86E7BE] hover:bg-[#41a27a] text-[#0D493C]"
           >
-            Komentar
+            <MessageSquare className="h-4 w-4" />
+            <p className="ml-1">Komentar</p>
           </Button>
-          <Button variant="default">Kirim</Button>
+          <Button variant="default" className="bg-[#F9C97B] hover:bg-[#e8b35e]">
+            <p className="text-[#0D493C]">Kirim</p>
+          </Button>
         </div>
       </div>
     </div>
@@ -62,7 +78,7 @@ type SliderProps = React.ComponentProps<typeof Slider>;
 export function SliderDemo({ className, ...props }: SliderProps) {
   return (
     <Slider
-      defaultValue={[3]}
+      defaultValue={[2]}
       max={4}
       step={1}
       className={cn("w-[100%] px-3 py-3", className)}

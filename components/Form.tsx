@@ -16,15 +16,6 @@ import { Input } from "@/components/ui/input";
 
 import { useForm } from "react-hook-form";
 
-// UNUSED Email Schema
-const LoginSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: "This field has to be filled." })
-    .email("This is not a valid email.")
-    .refine((e) => e === "abcd@fg.com", "This email is not in our database"),
-});
-
 // Username Schema
 const formSchema = z.object({
   username: z.string().min(2).max(50),

@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/shadcn-plugin.ts",
-    "components/WebVitals.js"
+    "components/WebVitals.js",
+    "lib/shadcn-preset.js"
   ],
   "exclude": ["node_modules"]
 }

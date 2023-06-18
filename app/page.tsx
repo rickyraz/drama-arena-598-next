@@ -1,31 +1,24 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+"use client";
+import React from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+function RedirectWKWK() {
+  const router = useRouter();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      router.push("/gontor-dua");
+    }, 2200);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [router]);
   return (
-    <main>
-      <div className="flex justify-center pt-20">
-        <Link href="/gontor-dua" className="px-5 py-4 bg-orange-400">
-          Gontor-Dua
-        </Link>
-      </div>
-    </main>
+    <div className="h-screen flex justify-center items-center px-5 text-center overflow-x-hidden overflow-y-hidden bg-[#041F14] text-[#D2FFEC]">
+      <p>Afwan, Untuk Drama Arena 598 Kampus lain masih belum tersedia</p>
+    </div>
   );
 }
 
-/*
-
-<div className="flex-col">
-        <Button variant="default">Default</Button>
-        <Button variant="secondary">secondary</Button>
-        <Button variant="destructive">destructive</Button>
-        <Button variant="ghost">ghost</Button>
-        <Button variant="link">link</Button>
-        <Button variant="outline">outline</Button>
-        <div className="pt-12"></div>
-        <div>
-          <p>asdasdsadasdasdasd</p>
-          <p>ini huruf kecil</p>
-        </div>
-      </div>
-*/
+export default RedirectWKWK;

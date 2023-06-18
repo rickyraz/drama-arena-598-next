@@ -11,14 +11,16 @@ function Index() {
   return (
     <div className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="flex justify-between items-center py-2">
-        <Image
-          src="/logo/logo-wide.webp"
-          alt="logo wide"
-          width={239}
-          height={86}
-          className="ml-2"
-          priority={true}
-        />
+        <Link href="/gontor-dua">
+          <Image
+            src="/logo/logo-wide.webp"
+            alt="logo wide"
+            width={239}
+            height={86}
+            className="ml-2"
+            priority={true}
+          />
+        </Link>
         <nav className="stroke-[#247865]">
           <SideNav />
         </nav>
@@ -38,14 +40,14 @@ export function SideNav() {
         </Button>
       </SheetTrigger>
       <SheetContent position="right" size="xl" className="text-lg ">
-        <div className="pt-10 flex flex-col h-screen justify-between">
+        <div className="flex flex-col h-screen justify-between pt-6">
           <ul className="font-medium text-[#53AA97] ">
             <li>
               <Link href="/gontor-dua" className="text-[#53AA97]">
                 <p
                   className={
                     pathname == "/gontor-dua"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/10 rounded-lg"
+                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
                       : "py-4 my-2"
                   }
                 >
@@ -59,7 +61,7 @@ export function SideNav() {
                 <p
                   className={
                     pathname == "/gontor-dua/penilaian/acara"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/10 rounded-lg"
+                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
                       : "py-4 my-2"
                   }
                 >
@@ -73,7 +75,7 @@ export function SideNav() {
                 <p
                   className={
                     pathname == "/gontor-dua/penilaian/properti"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/10 rounded-lg"
+                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
                       : "py-4 my-2"
                   }
                 >
@@ -87,7 +89,7 @@ export function SideNav() {
                 <p
                   className={
                     pathname == "/gontor-dua/penilaianku"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/10 rounded-lg"
+                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
                       : "py-4 my-2"
                   }
                 >
@@ -98,11 +100,10 @@ export function SideNav() {
             <Separator />
             <li>
               <Link href="/gontor-dua/terima-kasih">
-                {" "}
                 <p
                   className={
                     pathname == "/gontor-dua/terima-kasih"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/10 rounded-lg"
+                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
                       : "py-4 my-2"
                   }
                 >
@@ -117,7 +118,6 @@ export function SideNav() {
               width={141}
               height={220}
               alt="badge logo"
-              priority={true}
             />
           </div>
         </div>
