@@ -9,10 +9,20 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import supabase from "../../lib/supabaseClient";
+
+async function signInWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+  });
+
+  console.log(data);
+  console.log(error);
+}
 
 function Login() {
   return (
-    <div className="flex flex-col h-screen justify-between">
+    <div className="flex h-screen flex-col justify-between">
       <div className="flex justify-center pt-4">
         <Image
           src="/logo/logo-vertical.webp"
@@ -27,7 +37,8 @@ function Login() {
             <Label htmlFor="email">Email</Label>
             <Button
               variant="outline"
-              className="h-12 text-sm border-[#CDFFEA] border-2"
+              className="h-12 border-2 border-[#CDFFEA] text-sm"
+              onClick={() => signInWithGoogle}
             >
               <Image
                 src="/g_icon.svg"
@@ -43,7 +54,7 @@ function Login() {
           <div className="grid w-full max-w-[287px] items-center gap-2">
             <Label>Posisi/Peranan</Label>
             <Select>
-              <SelectTrigger className="w-[287px] h-12 border-[#CDFFEA] border-2 text-[#15563A]">
+              <SelectTrigger className="h-12 w-[287px] border-2 border-[#CDFFEA] text-[#15563A]">
                 <SelectValue placeholder="Peranan saat ini" />
               </SelectTrigger>
               <SelectContent>
@@ -63,7 +74,7 @@ function Login() {
             <Button
               type="submit"
               variant="default"
-              className="h-12 text-sm bg-[#0FA383] hover:bg-[#0b8066]"
+              className="h-12 bg-[#0FA383] text-sm hover:bg-[#0b8066]"
             >
               <span className="pl-1 text-white">Masuk</span>
             </Button>

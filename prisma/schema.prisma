@@ -25,7 +25,7 @@ model Pengguna {
   email  String           @unique
   name   String?
   no_hp  String?          @unique
-  posisi Role             @default(MASYARAKAT_SEKITAR)
+  posisi Role?            @default(MASYARAKAT_SEKITAR)
   suara  Suara_Pengguna[]
 
   @@map(name: "pengguna")
@@ -35,58 +35,73 @@ model Pengguna {
 // One-to-many Suara_Pengguna dan Acara_Suara_Pengguna
 model Suara_Pengguna {
   id                   String                 @id @default(cuid())
-  pengguna             Pengguna               @relation(fields: [penggunaId], references: [id])
-  penggunaId           String                 @map("pengguna_id")
+  pengguna             Pengguna?              @relation(fields: [penggunaId], references: [id])
+  penggunaId           String?                @map("pengguna_id")
   acara_suara_pengguna Acara_Suara_Pengguna[]
+
+  @@map(name: "suara_pengguna")
 }
 
 // mengapa typenya nama 'Table' untuk menunjukkan relasi yang berlawanan. 
+// ketika acara_suara_pengguna (voting dri pengguna pada 1 acara) dihapus MAKA suara_pengguna dihapus
 model Acara_Suara_Pengguna {
-  id              String         @id @default(cuid())
-  suara           Int
-  catatan         String
-  suara_pengguna  Suara_Pengguna @relation(fields: [suaraPenggunaId], references: [id])
-  suaraPenggunaId String
-  acara           Acara          @relation(fields: [acaraId], references: [id])
-  acaraId         String
+  id              String          @id @default(cuid())
+  suara           Int?
+  catatan         String?
+  suara_pengguna  Suara_Pengguna? @relation(fields: [suaraPenggunaId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  suaraPenggunaId String?
+  acara           Acara?          @relation(fields: [acaraId], references: [id])
+  acaraId         String?
+
+  @@map(name: "acara_suara_pengguna")
 }
 
 // One-to-Many Konser dan Acara - 1 id Konser punya banyak Acara
 model Konser {
   id               String  @id @default(cuid())
-  total_suara      Int
-  rata_rata_suara  Float
-  acara_terfavorit String
+  total_suara      Int?
+  rata_rata_suara  Float?
+  acara_terfavorit String?
   konser_acara     Acara[]
+
+  @@map(name: "konser")
 }
 
 // Many-to-one Acara dan Acara_Suara_Pengguna
 // One-to-Many Acara dan Acara_Jenis_Acara
 model Acara {
   id               String                 @id @default(cuid())
-  nama_acara       String
-  penanggung_jawab String
+  nama_acara       String?
+  penanggung_jawab String?
+  images           String?
+  pembimbing       String?
   pemeran          String[]
   suara_acara      Acara_Suara_Pengguna[]
   jenis_Acara      Acara_Jenis_Acara[]
   konser           Konser                 @relation(fields: [konserId], references: [id])
   konserId         String
+
+  @@map(name: "acara")
 }
 
 // mengapa typenya nama 'Table' untuk menunjukkan relasi yang berlawanan. 
 model Acara_Jenis_Acara {
-  id      String      @id @default(cuid())
-  acara   Acara       @relation(fields: [acaraId], references: [id])
-  acaraId String
-  jenis   Jenis_Acara @relation(fields: [jenisId], references: [id])
-  jenisId String      @unique // relation scalar field (used in the `@relation` attribute above)
+  id      String       @id @default(cuid())
+  acara   Acara?       @relation(fields: [acaraId], references: [id])
+  acaraId String?
+  jenis   Jenis_Acara? @relation(fields: [jenisId], references: [id])
+  jenisId String?
+
+  @@map(name: "acara_jenis_acara")
 }
 
-// One-to-One Jenis_Acara dan Acara_Jenis_Acara
+// Many-to-One Acara_Jenis_Acara dan Jenis_Acara
 model Jenis_Acara {
-  id          String             @id @default(cuid())
-  jenis       String             @unique
-  acara_jenis Acara_Jenis_Acara?
+  id          String              @id @default(cuid())
+  jenis       String?
+  acara_jenis Acara_Jenis_Acara[]
+
+  @@map(name: "jenis_acara")
 }
 
 enum Role {

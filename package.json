@@ -13,6 +13,8 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.20.1",
+    "@clerk/nextjs": "^4.21.3",
     "@effect/core": "^0.0.16",
     "@effect/io": "^0.26.0",
     "@fp-ts/core": "^0.2.1",
@@ -27,6 +29,8 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@splidejs/react-splide": "^0.7.12",
+    "@supabase/auth-helpers-nextjs": "^0.7.2",
+    "@supabase/supabase-js": "^2.25.0",
     "@tanstack/react-query": "^4.29.13",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",

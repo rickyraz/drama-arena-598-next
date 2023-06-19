@@ -15,10 +15,12 @@ function RedirectWKWK() {
     };
   }, [router]);
   return (
-    <div className="h-screen flex justify-center items-center px-5 text-center overflow-x-hidden overflow-y-hidden bg-[#041F14] text-[#D2FFEC]">
+    
+    <div className="flex h-screen items-center justify-center overflow-x-hidden overflow-y-hidden bg-[#041F14] px-5 text-center text-[#D2FFEC]">
       <p>Afwan, Untuk Drama Arena 598 Kampus lain masih belum tersedia</p>
     </div>
   );
 }
 
 export default RedirectWKWK;
+
