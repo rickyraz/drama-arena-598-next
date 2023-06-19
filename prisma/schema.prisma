@@ -1,31 +1,97 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// A Prisma schema can only have one data source
+// sebenarnya ditiap pemanggilan prisma-client ada override a data source url
+// ketika migrasi skema baru pada dev ada "Shadow Database" untuk menjaga kebenaran skema "prisma migrate dev/reset"
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// generator determines which assets are created when you run the "prisma generate" command
+// https://www.prisma.io/docs/concepts/components/preview-features/client-preview-features/ 
+// to express our queries without needing that overhead: JSON. - https://github.com/prisma/prisma/releases/tag/4.11.0 
+//  Using it with Data Proxy and Prisma Data Platform currently also leads to errors.
 
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["jsonProtocol"]
-  
+  binaryTargets   = ["native"]
 }
 
-datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
+// One-to-many Pengguna dan Suara_Pengguna
+model Pengguna {
+  id     String           @id @default(cuid())
+  email  String           @unique
+  name   String?
+  no_hp  String?          @unique
+  posisi Role             @default(MASYARAKAT_SEKITAR)
+  suara  Suara_Pengguna[]
+
+  @@map(name: "pengguna")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+// mengapa typenya nama Table untuk menunjukkan relasi yang berlawanan. 
+// One-to-many Suara_Pengguna dan Acara_Suara_Pengguna
+model Suara_Pengguna {
+  id                   String                 @id @default(cuid())
+  pengguna             Pengguna               @relation(fields: [penggunaId], references: [id])
+  penggunaId           String                 @map("pengguna_id")
+  acara_suara_pengguna Acara_Suara_Pengguna[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  user    User?   @relation(fields: [userId], references: [id])
-  userId  Int?
+// mengapa typenya nama 'Table' untuk menunjukkan relasi yang berlawanan. 
+model Acara_Suara_Pengguna {
+  id              String         @id @default(cuid())
+  suara           Int
+  catatan         String
+  suara_pengguna  Suara_Pengguna @relation(fields: [suaraPenggunaId], references: [id])
+  suaraPenggunaId String
+  acara           Acara          @relation(fields: [acaraId], references: [id])
+  acaraId         String
 }
 
+// One-to-Many Konser dan Acara - 1 id Konser punya banyak Acara
+model Konser {
+  id               String  @id @default(cuid())
+  total_suara      Int
+  rata_rata_suara  Float
+  acara_terfavorit String
+  konser_acara     Acara[]
+}
+
+// Many-to-one Acara dan Acara_Suara_Pengguna
+// One-to-Many Acara dan Acara_Jenis_Acara
+model Acara {
+  id               String                 @id @default(cuid())
+  nama_acara       String
+  penanggung_jawab String
+  pemeran          String[]
+  suara_acara      Acara_Suara_Pengguna[]
+  jenis_Acara      Acara_Jenis_Acara[]
+  konser           Konser                 @relation(fields: [konserId], references: [id])
+  konserId         String
+}
+
+// mengapa typenya nama 'Table' untuk menunjukkan relasi yang berlawanan. 
+model Acara_Jenis_Acara {
+  id      String      @id @default(cuid())
+  acara   Acara       @relation(fields: [acaraId], references: [id])
+  acaraId String
+  jenis   Jenis_Acara @relation(fields: [jenisId], references: [id])
+  jenisId String      @unique // relation scalar field (used in the `@relation` attribute above)
+}
+
+// One-to-One Jenis_Acara dan Acara_Jenis_Acara
+model Jenis_Acara {
+  id          String             @id @default(cuid())
+  jenis       String             @unique
+  acara_jenis Acara_Jenis_Acara?
+}
+
+enum Role {
+  WALI_SANTRI
+  MASYARAKAT_SEKITAR
+  USTADZ
+  USTADZAH
+}

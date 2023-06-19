@@ -153,54 +153,6 @@ function PopUpMerchendise() {
   );
 }
 
-// eslint-disable-next-line no-undef
-// export const AutoplayExample: React.FC = () => {
-//   const options = {
-//     type: "loop",
-//     gap: "1rem",
-//     autoplay: true,
-//     pauseOnHover: false,
-//     resetProgress: false,
-//     height: "15rem",
-//   };
-
-//   return (
-//     <div className="wrapper">
-//       <h2 id="autoplay-example-heading">Autoplay</h2>
-//       <Splide
-//         options={options}
-//         aria-labelledby="autoplay-example-heading"
-//         hasTrack={false}
-//       >
-//         <div style={{ position: "relative" }}>
-//           <SplideTrack>
-//             {generateSlides().map((slide) => (
-//               <SplideSlide key={slide.src}>
-//                 {/*  fill={true} */}
-//                 <Image
-//                   src={slide.src}
-//                   alt={slide.alt}
-//                   width={500}
-//                   height={500}
-//                 />
-//               </SplideSlide>
-//             ))}
-//           </SplideTrack>
-//         </div>
-
-//         <div className="splide__progress">
-//           <div className="splide__progress__bar" />
-//         </div>
-
-//         <button className="splide__toggle">
-//           <span className="splide__toggle__play">Play</span>
-//           <span className="splide__toggle__pause">Pause</span>
-//         </button>
-//       </Splide>
-//     </div>
-//   );
-// };
-
 function DilihatOleh() {
   return (
     <div className="pt-9">
