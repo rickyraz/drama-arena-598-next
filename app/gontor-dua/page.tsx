@@ -40,7 +40,7 @@ function GontorDua() {
 
 export default GontorDua;
 
-export function Hasil() {
+function Hasil() {
   return (
     <div className="px-6 pt-9">
       <h2 className="text-xl font-semibold text-[#0FA383]">Hasil Acara</h2>
