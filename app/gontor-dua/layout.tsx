@@ -13,10 +13,8 @@ interface GontoDuaProps {
 
 export default function GontorDuaLayout({ children }: GontoDuaProps) {
   return (
-    <div>
-      <main>
-        <Provider>{children}</Provider>
-      </main>
-    </div>
+    <main className="container">
+      <Provider>{children}</Provider>
+    </main>
   );
 }

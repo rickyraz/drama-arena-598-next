@@ -26,7 +26,7 @@ interface RootProps {
 export default function RootLayout({ children }: RootProps) {
   return (
     <html lang="en">
-      <body className={(cn("antialiased"), inter.className)}>
+      <body className={(cn("container antialiased"), inter.className)}>
         <NextTopLoader
           color="#0FA383"
           crawlSpeed={125}

@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Edit3 } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -9,11 +8,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { ChevronRight, Edit3 } from "lucide-react";
 import Index from "@/components/Header/Main";
 import Image from "next/image";
-import React from "react";
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import React, { ChangeEvent } from "react";
+import { create } from "zustand";
 
 function Detail() {
   return (
@@ -42,18 +43,90 @@ function Details() {
         </Button>
       </div>
       <div className="mt-3 aspect-[3/2]  w-full rounded-lg bg-[#83B5A0]">
-        asdasd
+        gambar
       </div>
     </div>
   );
 }
 
+interface FormData {
+  selectValue: string;
+  textareaValue: string;
+}
+
+interface FormDataStore {
+  formData: FormData;
+  isSubmitted: boolean;
+  isDisabled: boolean;
+  noteStatus: string;
+  warning: string;
+  // eslint-disable-next-line no-unused-vars
+  setFormData: (data: Partial<FormData>) => void;
+  // eslint-disable-next-line no-unused-vars
+  setIsSubmitted: (value: boolean) => void;
+  // eslint-disable-next-line no-unused-vars
+  setIsDisabled: (value: boolean) => void;
+  // eslint-disable-next-line no-unused-vars
+  setNoteStatus: (status: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  setWarnings: (message: string) => void;
+}
+
+const useFormDataStore = create<FormDataStore>((set) => ({
+  formData: { selectValue: "", textareaValue: "" },
+  isSubmitted: false,
+  isDisabled: false,
+  noteStatus: "",
+  warning: "",
+  setFormData: (data: any) =>
+    set((state: { formData: any }) => ({
+      formData: { ...state.formData, ...data },
+    })),
+  setIsSubmitted: (value: any) => set({ isSubmitted: value }),
+  setIsDisabled: (value: any) => set({ isDisabled: value }),
+  setNoteStatus: (status: any) => set({ noteStatus: status }),
+  setWarnings: (message: any) => set({ warning: message }),
+}));
+
 function Voting() {
+  const formDataStore = useFormDataStore();
+
+  // eslint-disable-next-line no-unused-vars
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault(); // Menghentikan aksi default submit form
+
+    const { selectValue, textareaValue } = formDataStore.formData;
+
+    if (selectValue === "") {
+      formDataStore.setWarnings("Mohon pilih opsi pada select tag.");
+      return;
+    }
+
+    console.log("Data yang di-submit: ", selectValue, textareaValue); // Mencetak data ke console
+    formDataStore.setIsSubmitted(true);
+    formDataStore.setIsDisabled(true);
+    formDataStore.setWarnings("");
+
+    if (textareaValue === "") {
+      formDataStore.setNoteStatus("Catatan Kosong");
+    } else {
+      formDataStore.setNoteStatus("Tanda Tercatat");
+    }
+  };
+
+  const handleSelectChange = (value: string) => {
+    formDataStore.setFormData({ selectValue: value });
+  };
+
   return (
     <div className="px-6 pt-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <Select>
+          <Select
+            value={formDataStore.formData.selectValue}
+            onValueChange={handleSelectChange}
+            disabled={formDataStore.isSubmitted || formDataStore.isDisabled}
+          >
             <SelectTrigger className="w-full bg-[#CDFFEA] text-center text-lg font-medium text-[#1BA88A]">
               <Image
                 src="/star.svg"
@@ -62,9 +135,9 @@ function Voting() {
                 height={24}
                 className="mr-2"
               />
-              <SelectValue placeholder="1-10 " className="px-6 py-2 pl-2" />
+              <SelectValue placeholder="1-10 " className="px-6 py-2 " />
             </SelectTrigger>
-            <SelectContent className="text-center">
+            <SelectContent className="px-6 py-2 ">
               <SelectItem value="1">1</SelectItem>
               <SelectItem value="2">2</SelectItem>
               <SelectItem value="3">3</SelectItem>
@@ -81,29 +154,67 @@ function Voting() {
         <PopUpText>
           <div className="flex rounded-lg border border-[#86E7BE] px-4 py-2">
             <Edit3 className="stroke-[#86E7BE]" />
-            <p className="ml-2 text-[#86E7BE]">Catatan</p>
+            <div className="ml-2 text-[#86E7BE]">
+              {formDataStore.noteStatus ? (
+                <p>{formDataStore.noteStatus}</p>
+              ) : (
+                <p>Catatan</p>
+              )}
+            </div>
           </div>
         </PopUpText>
       </div>
-      <Button className=" mt-3 h-[60px] w-full bg-[#F9C97B] text-[#041F14] hover:bg-[#e8b35e]">
-        Kirim
-      </Button>
+
+      <input
+        type="submit"
+        value={formDataStore.isSubmitted ? "Sudah Dikirim" : "Kirim"}
+        disabled={formDataStore.isSubmitted || formDataStore.isDisabled}
+        className=" mt-3 h-[60px] w-full rounded-lg bg-[#F9C97B] text-[#041F14] hover:bg-[#e8b35e]"
+      />
+
+      {formDataStore.warning && (
+        <p className="mt-2 text-red-500">{formDataStore.warning}</p>
+      )}
     </div>
   );
 }
 
-type PopUp = {
-  children: any;
+type PopUpProps = {
+  children: React.ReactNode;
 };
 
-function PopUpText({ children }: PopUp) {
+function PopUpText({ children }: PopUpProps) {
+  const formDataStore = useFormDataStore();
+
+  const handleTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    formDataStore.setFormData({ [name]: value });
+  };
   return (
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
       <DialogContent>
-        {/* text area */}
-        {/* simpan */}
-        <p>simpannnnnnnnnnnnnnn</p>
+        <Textarea
+          name="textareaValue"
+          value={formDataStore.formData.textareaValue}
+          onChange={handleTextareaChange}
+          placeholder="berikan komentar disini"
+          readOnly={formDataStore.isSubmitted || formDataStore.isDisabled}
+          onFocus={() => {
+            if (!formDataStore.formData.textareaValue) {
+              formDataStore.setNoteStatus("Catatan Kosong");
+            } else {
+              formDataStore.setNoteStatus("Tercatat");
+            }
+          }}
+          onBlur={() => {
+            if (!formDataStore.formData.textareaValue) {
+              formDataStore.setNoteStatus("Catatan Kosong");
+            } else {
+              formDataStore.setNoteStatus("Tercatat");
+            }
+          }}
+        />
       </DialogContent>
     </Dialog>
   );
@@ -121,7 +232,11 @@ function TabsComponent() {
       </TabsList>
       <TabsContent value="informasi-acara">
         <h3 className="mt-3 text-lg font-semibold text-[#0FA383]">
-          Penanggung Jawab
+          Pembimbing Acara
+        </h3>
+        <p>Al-Ustadz Muhammad Faizar</p>
+        <h3 className="mt-3 text-lg font-semibold text-[#0FA383]">
+          Penanggung Jawab Acara
         </h3>
         <p>Al-Ustadz Muhammad Faizar</p>
         <h3 className="mt-2 text-lg font-semibold text-[#0FA383]">Penampil</h3>

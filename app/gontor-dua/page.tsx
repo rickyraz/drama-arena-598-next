@@ -73,7 +73,9 @@ export function Hasil() {
 function AcaraFavorit() {
   return (
     <div className="px-6 pt-9">
-      <h2 className=" text-xl font-semibold text-[#0FA383]">Hasil Acara</h2>
+      <h2 className=" text-xl font-semibold text-[#0FA383]">
+        Acara Terfavorite
+      </h2>
       <div className=" flex  pt-2">
         <div className="flex w-full flex-col rounded-lg bg-[#D2FFED] px-3 py-6 text-[22px]">
           <div className="flex w-full items-center justify-between text-[#0A3D32]">
