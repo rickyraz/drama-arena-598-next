@@ -13,7 +13,7 @@ function Property() {
   return (
     <>
       <Index />
-      <section className="bg-[#041F14] min-h-screen pb-20">
+      <section className="min-h-screen bg-[#041F14] pb-20">
         <Catatan />
         <Nilai property="Background Panggung" />
         <Nilai property="Kebersihan" />
@@ -31,13 +31,13 @@ interface Nilai {
 
 function Nilai({ property }: Nilai) {
   return (
-    <div className="pt-9 px-6 ">
-      <div className="border rounded-lg bg-[#D2FFEC]">
-        <p className="font-semibold text-[#0FA383] py-3 ml-3 text-base">
+    <div className="px-6 pt-9 ">
+      <div className="rounded-lg border bg-[#D2FFEC]">
+        <p className="ml-3 py-3 text-base font-semibold text-[#0FA383]">
           {property}
         </p>
         <div>
-          <ul className="flex justify-between mx-2">
+          <ul className="mx-2 flex justify-between">
             <li>
               <Image src="/emoji/xx.svg" alt="XD" width={32} height={32} />
             </li>
@@ -56,16 +56,16 @@ function Nilai({ property }: Nilai) {
           </ul>
         </div>
         <SliderDemo />
-        <div className="pt-3 px-3 pb-6 flex justify-between">
+        <div className="flex justify-between px-3 pb-6 pt-3">
           <Button
             variant="default"
-            className="bg-[#86E7BE] hover:bg-[#41a27a] text-[#0D493C]"
+            className="bg-[#86E7BE] text-[#0D493C] hover:bg-[#41a27a]"
           >
             <MessageSquare className="h-4 w-4" />
             <p className="ml-1">Komentar</p>
           </Button>
           <Button variant="default" className="bg-[#F9C97B] hover:bg-[#e8b35e]">
-            <p className="text-[#0D493C]">Kirim</p>
+            <p className="text-[#0D493C]">Kirimm</p>
           </Button>
         </div>
       </div>
@@ -75,7 +75,7 @@ function Nilai({ property }: Nilai) {
 
 type SliderProps = React.ComponentProps<typeof Slider>;
 
-export function SliderDemo({ className, ...props }: SliderProps) {
+function SliderDemo({ className, ...props }: SliderProps) {
   return (
     <Slider
       defaultValue={[2]}
