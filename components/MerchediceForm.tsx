@@ -91,7 +91,7 @@ function detectMobileOperator(phone: string): string | null {
 
 */
 
-export function ProfileForm() {
+export function MerchediceForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

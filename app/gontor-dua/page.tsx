@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import Index from "@/components/Header/Main";
-import { ProfileForm } from "@/components/Form";
+import { MerchediceForm } from "@/components/MerchediceForm";
 import { Balancer } from "react-wrap-balancer";
 import {
   WhatsAppShare,
@@ -169,7 +169,7 @@ function PopUpMerchendise() {
               Isi form untuk mengantri pembelian Merchendise atau Rekaman
             </Balancer>
           </DialogDescription>
-          <ProfileForm />
+          <MerchediceForm />
         </DialogHeader>
       </DialogContent>
     </Dialog>
