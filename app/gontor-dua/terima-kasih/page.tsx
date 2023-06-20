@@ -1,6 +1,7 @@
 import React from "react";
 import Index from "@/components/Header/Main";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
@@ -73,7 +74,7 @@ function PopUpPanitia() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="pt-6">
-          <DialogTitle className="text-center">
+          <DialogTitle className="pb-3 text-center">
             <Balancer>Panitia Drama Arena</Balancer>
           </DialogTitle>
           <ListPanitia />
@@ -98,45 +99,15 @@ function PopUpPembimbing() {
           <DialogTitle className="text-center">
             <Balancer>Pembimbing Drama Arena</Balancer>
           </DialogTitle>
-          {/* disini table */}
+          <ListPembimbing />
         </DialogHeader>
       </DialogContent>
     </Dialog>
   );
 }
 
-function ListPanitia() {
+function ListPembimbing() {
   const panitiaData = [
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "NH",
-      nama: "Nabil Hafidz Al Khair",
-      jabatan: "Ketua 1",
-    },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "MF",
-      nama: "Muhammad Farid Wajiidi",
-      jabatan: "ketua 2",
-    },
-    {
-      avatarSrc: "/avatars/04.png",
-      avatarFallback: "IN",
-      nama: "Noaf Rizkylah Akbar",
-      jabatan: "ketua 3",
-    },
-    {
-      avatarSrc: "/avatars/04.png",
-      avatarFallback: "WK",
-      nama: "William Kim",
-      jabatan: "will@jabatan.com",
-    },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "SD",
-      nama: "Sofia Davis",
-      jabatan: "sofia.davis@jabatan.com",
-    },
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "NH",
@@ -189,7 +160,7 @@ function ListPanitia() {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "WK",
       nama: "Adhitya Kusumawardana I",
-      jabatan: "Sponsorship",
+      jabatan: "Sponsorship 1",
     },
     {
       avatarSrc: "/avatars/02.png",
@@ -207,91 +178,79 @@ function ListPanitia() {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "MF",
       nama: "Adam Hikmal Hakim",
-      jabatan: "Persidangan",
+      jabatan: "Persidangan 1",
     },
     {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "IN",
-      nama: "Noaf Rizkylah Akbar",
+      nama: "Sendy Fauzan Aufar",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "WK",
-      nama: "William Kim",
+      nama: "Farhan Fadlurrohman",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "SD",
-      nama: "Sofia Davis",
+      nama: "Ahmad Farrel Indi Akbar",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "NH",
-      nama: "Nabil Hafidz Al Khair",
+      nama: "M. Iqbal Masruri",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "MF",
-      nama: "Muhammad Farid Wajiidi",
+      nama: "Riffat Amzar Isnandiwa",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "IN",
-      nama: "Noaf Rizkylah Akbar",
+      nama: "Sa'dan Abdullah",
       jabatan: "Persidangan",
     },
     {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "WK",
-      nama: "William Kim",
+      nama: "Edi Surono",
       jabatan: "Persidangan",
     },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "SD",
-      nama: "Sofia Davis",
-      jabatan: "Persidangan",
-    },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "NH",
-      nama: "Nabil Hafidz Al Khair",
-      jabatan: "Persidangan",
-    },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "MF",
-      nama: "Muhammad Farid Wajiidi",
-      jabatan: "Persidangan",
-    },
-    {
-      avatarSrc: "/avatars/04.png",
-      avatarFallback: "IN",
-      nama: "Noaf Rizkylah Akbar",
-      jabatan: "Persidangan",
-    },
-    {
-      avatarSrc: "/avatars/04.png",
-      avatarFallback: "WK",
-      nama: "William Kim",
-      jabatan: "Persidangan",
-    },
-    {
-      avatarSrc: "/avatars/02.png",
-      avatarFallback: "SD",
-      nama: "Sofia Davis",
-      jabatan: "Persidangan",
-    },
+  ];
+
+  return (
+    <ScrollArea className="h-96 w-full rounded-md border">
+      <div className="space-y-3 pt-3">
+        {panitiaData.map((panitia, index) => (
+          <div className="flex items-center" key={index}>
+            <Avatar className="h-9 w-9">
+              <AvatarImage src={panitia.avatarSrc} alt="Avatar" />
+              <AvatarFallback>{panitia.avatarFallback}</AvatarFallback>
+            </Avatar>
+            <div className="ml-4 space-y-1">
+              <p className="text-sm font-medium leading-none">{panitia.nama}</p>
+              <p className="text-sm text-muted-foreground">{panitia.jabatan}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </ScrollArea>
+  );
+}
+
+function ListPanitia() {
+  const panitiaData = [
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "NH",
       nama: "Nabil Hafidz Al Khair",
-      jabatan: "Persidangan",
+      jabatan: "Ketua 1",
     },
     {
       avatarSrc: "/avatars/02.png",
@@ -308,31 +267,201 @@ function ListPanitia() {
     {
       avatarSrc: "/avatars/04.png",
       avatarFallback: "WK",
-      nama: "William Kim",
-      jabatan: "will@jabatan.com",
+      nama: "Azra Bey Fananie",
+      jabatan: "Sekretaris 1",
     },
     {
       avatarSrc: "/avatars/02.png",
       avatarFallback: "SD",
-      nama: "Sofia Davis",
-      jabatan: "sofia.davis@jabatan.com",
+      nama: "Muhammad Fajrul Falah",
+      jabatan: "Sekretaris 2",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "NH",
+      nama: "M. Shobirin Syahbudin",
+      jabatan: "Sekretaris 3",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "MF",
+      nama: "Ian Abi Zaky",
+      jabatan: "Bendahara 1",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "IN",
+      nama: "Leonel Dega Maulana",
+      jabatan: "Bendahara 2",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "WK",
+      nama: "Adhitya Kusumawardana I",
+      jabatan: "Sponsorship 1",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Rayhan Julviar Zien",
+      jabatan: "Sponsorship",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "NH",
+      nama: "Fernandy Baedy",
+      jabatan: "Sponsorship",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "MF",
+      nama: "Adam Hikmal Hakim",
+      jabatan: "Persidangan 1",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "IN",
+      nama: "Sendy Fauzan Aufar",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "WK",
+      nama: "Farhan Fadlurrohman",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Ahmad Farrel Indi Akbar",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "NH",
+      nama: "M. Iqbal Masruri",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "MF",
+      nama: "Riffat Amzar Isnandiwa",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "IN",
+      nama: "Sa'dan Abdullah",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "WK",
+      nama: "Edi Surono",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Makarim Abdullah",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "NH",
+      nama: "M. Nabih Tazqiyaturridha",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "MF",
+      nama: "M. Fairuz Zidane",
+      jabatan: "Persidangan",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "IN",
+      nama: "Muhammad Riski",
+      jabatan: "Elektro 1",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "WK",
+      nama: "M.Bizaqqadaram Hartono",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Muhammad Juanda",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "NH",
+      nama: "Emir Fatih Shamid",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "MF",
+      nama: "Muhammad Itsna Hadi",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "IN",
+      nama: "Muhammad Falih Al Fatih",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/04.png",
+      avatarFallback: "WK",
+      nama: "Rakha Subhi Daniswara",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "M. Farrel Mahesa",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Muhammad Fadli Hidayat",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "Rejwa Mustafa Rafsanjani",
+      jabatan: "Elektro",
+    },
+    {
+      avatarSrc: "/avatars/02.png",
+      avatarFallback: "SD",
+      nama: "M. Farel Ardianta",
+      jabatan: "Elektro",
     },
   ];
 
   return (
-    <div className="space-y-3 pt-6">
-      {panitiaData.map((panitia, index) => (
-        <div className="flex items-center" key={index}>
-          <Avatar className="h-9 w-9">
-            <AvatarImage src={panitia.avatarSrc} alt="Avatar" />
-            <AvatarFallback>{panitia.avatarFallback}</AvatarFallback>
-          </Avatar>
-          <div className="ml-4 space-y-1">
-            <p className="text-sm font-medium leading-none">{panitia.nama}</p>
-            <p className="text-sm text-muted-foreground">{panitia.jabatan}</p>
+    <ScrollArea className="h-96 w-full rounded-md border">
+      <div className="space-y-3 pt-3">
+        {panitiaData.map((panitia, index) => (
+          <div className="flex items-center" key={index}>
+            <Avatar className="h-9 w-9">
+              <AvatarImage src={panitia.avatarSrc} alt="Avatar" />
+              <AvatarFallback>{panitia.avatarFallback}</AvatarFallback>
+            </Avatar>
+            <div className="ml-4 space-y-1">
+              <p className="text-sm font-medium leading-none">{panitia.nama}</p>
+              <p className="text-sm text-muted-foreground">{panitia.jabatan}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </ScrollArea>
   );
 }
