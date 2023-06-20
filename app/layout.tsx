@@ -3,7 +3,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { cn } from "@/lib/utils";
-import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,18 +25,15 @@ interface RootProps {
 
 export default function RootLayout({ children }: RootProps) {
   return (
-    <ClerkProvider frontendApi="pk_test_bWF0dXJlLWtyaWxsLTAuY2xlcmsuYWNjb3VudHMuZGV2JA">
-      <html lang="en">
-        <body className={(cn("antialiased"), inter.className)}>
-          <NextTopLoader
-            color="#0FA383"
-            crawlSpeed={125}
-            initialPosition={0.02}
-          />
-
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={(cn("antialiased"), inter.className)}>
+        <NextTopLoader
+          color="#0FA383"
+          crawlSpeed={125}
+          initialPosition={0.02}
+        />
+        {children}
+      </body>
+    </html>
   );
 }

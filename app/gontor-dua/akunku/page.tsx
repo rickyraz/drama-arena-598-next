@@ -17,6 +17,7 @@ function Penilaianku() {
     <>
       <Index />
       <section className="min-h-screen bg-[#041F14]">
+        <Akunku />
         <Penilai />
         <EditNilai namaAcara="Tari Reog Ponorogo" />
         <Nilaiku acara="Tari Topeng Ireng" />
@@ -30,10 +31,34 @@ export default Penilaianku;
 function Penilai() {
   return (
     <div className="pt-9">
-      <h2 className="px-6 text-xl font-semibold text-[#0FA383]">Penilaianku</h2>
+      <h2 className="px-6 text-xl font-semibold text-[#0FA383]">Penilaian</h2>
     </div>
   );
 }
+const Akunku: React.FC = () => {
+  return (
+    <div className="px-6 pt-6">
+      <h2 className=" text-xl font-semibold text-[#0FA383] ">Akun</h2>
+
+      <div className="flex justify-between pt-1">
+        <p className="font-semibold text-white">Nama:</p>
+        <p className="text-white">ricky</p>
+      </div>
+      <div className="flex justify-between pt-1">
+        <p className="font-semibold text-white">No Telp:</p>
+        <p className="text-white">081902794798</p>
+      </div>
+      <div className="flex justify-between pt-1">
+        <p className="font-semibold text-white">Email:</p>
+        <p className="text-white">rickyraihan83@gmail.com</p>
+      </div>
+      <div className="flex justify-between pt-1">
+        <p className="font-semibold text-white">Peranan:</p>
+        <p className="text-white">Ustadz</p>
+      </div>
+    </div>
+  );
+};
 
 type EditNilaiProps = {
   namaAcara: string;

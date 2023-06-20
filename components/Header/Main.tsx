@@ -1,25 +1,17 @@
-"use client";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Separator } from "../ui/separator";
+import DynLink from "../DynLink";
+import { LogoHeader, LogoSamping } from "../DynLogo";
 
 function Index() {
   return (
-    <div className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
-      <div className="flex justify-between items-center py-2">
+    <div className="sticky top-0 z-10 border-b border-gray-200 bg-white bg-opacity-30 backdrop-blur-lg backdrop-filter">
+      <div className="flex items-center justify-between py-2">
         <Link href="/gontor-dua">
-          <Image
-            src="/logo/logo-wide.webp"
-            alt="logo wide"
-            width={239}
-            height={86}
-            className="ml-2"
-            priority={true}
-          />
+          <LogoHeader />
         </Link>
         <nav className="stroke-[#247865]">
           <SideNav />
@@ -30,8 +22,6 @@ function Index() {
 }
 
 export function SideNav() {
-  const pathname = usePathname();
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -40,85 +30,36 @@ export function SideNav() {
         </Button>
       </SheetTrigger>
       <SheetContent position="right" size="xl" className="text-lg ">
-        <div className="flex flex-col h-screen justify-between pt-6">
+        <div className="flex h-screen flex-col justify-between pt-3">
           <ul className="font-medium text-[#53AA97] ">
             <li>
-              <Link href="/gontor-dua" className="text-[#53AA97]">
-                <p
-                  className={
-                    pathname == "/gontor-dua"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
-                      : "py-4 my-2"
-                  }
-                >
-                  Halaman Utama
-                </p>
-              </Link>
+              <DynLink href="/gontor-dua" link="Halaman Utama" />
             </li>
             <Separator />
             <li>
-              <Link href="/gontor-dua/penilaian/acara">
-                <p
-                  className={
-                    pathname == "/gontor-dua/penilaian/acara"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
-                      : "py-4 my-2"
-                  }
-                >
-                  Menilai Acara
-                </p>
-              </Link>
+              <DynLink
+                href="/gontor-dua/penilaian/acara"
+                link="Menilai Acara"
+              />
             </li>
             <Separator />
             <li>
-              <Link href="/gontor-dua/penilaian/properti">
-                <p
-                  className={
-                    pathname == "/gontor-dua/penilaian/properti"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
-                      : "py-4 my-2"
-                  }
-                >
-                  Menilai Properti Acara
-                </p>
-              </Link>
+              <DynLink
+                href="/gontor-dua/penilaian/properti"
+                link="Menilai Properti Acara"
+              />
             </li>
             <Separator />
             <li>
-              <Link href="/gontor-dua/penilaianku">
-                <p
-                  className={
-                    pathname == "/gontor-dua/penilaianku"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
-                      : "py-4 my-2"
-                  }
-                >
-                  Penilaianku
-                </p>
-              </Link>
+              <DynLink href="/gontor-dua/akunku" link="Akunku" />
             </li>
             <Separator />
             <li>
-              <Link href="/gontor-dua/terima-kasih">
-                <p
-                  className={
-                    pathname == "/gontor-dua/terima-kasih"
-                      ? "py-4 my-2 pl-3 bg-[#53AA97]/30 rounded-lg"
-                      : "py-4 my-2"
-                  }
-                >
-                  Informasi Lain & <br /> Terima Kasih
-                </p>
-              </Link>
+              <DynLink href="/gontor-dua/terima-kasih" link="Terima Kasih" />
             </li>
           </ul>
           <div className="flex justify-center py-12">
-            <Image
-              src="/logo/badge-logo.webp"
-              width={141}
-              height={220}
-              alt="badge logo"
-            />
+            <LogoSamping />
           </div>
         </div>
       </SheetContent>

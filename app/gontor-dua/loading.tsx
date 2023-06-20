@@ -1,9 +1,8 @@
 import React from "react";
-
-// import { Skeleton } from "@/components/ui/skeleton";
+import LaodingComponent from "../../components/Loadingss";
 
 function GontorDuaLoading() {
-  return <div>Loading...</div>;
+  return <LaodingComponent />;
 }
 
 export default GontorDuaLoading;

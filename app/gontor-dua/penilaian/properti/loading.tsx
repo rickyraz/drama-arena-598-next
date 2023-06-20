@@ -1,9 +1,8 @@
 import React from "react";
+import LaodingComponent from "../../../../components/Loadingss";
 
-// import { Skeleton } from "@/components/ui/skeleton";
-
-function PropertyLoading() {
-  return <div>Loading...</div>;
+function GontorDuaLoading() {
+  return <LaodingComponent />;
 }
 
-export default PropertyLoading;
+export default GontorDuaLoading;

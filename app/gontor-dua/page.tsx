@@ -1,5 +1,8 @@
 // import { Skeleton } from "@/components/ui/skeleton";
 // import { Button } from "@/components/ui/button";
+// import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+// import { generateSlides } from "@/lib/generate-slide";
+
 import {
   Dialog,
   DialogContent,
@@ -9,11 +12,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-// import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-// import { generateSlides } from "@/lib/generate-slide";
 import Index from "@/components/Header/Main";
 import { ProfileForm } from "@/components/Form";
 import { Balancer } from "react-wrap-balancer";
+import {
+  WhatsAppShare,
+  CopyLink,
+  FacebookShare,
+  LinkedShare,
+  PinterestShare,
+  TwitterShare,
+} from "@/components/BtnShare";
 
 function GontorDua() {
   return (
@@ -55,30 +64,11 @@ export function Hasil() {
             56
           </span>
         </div>
-        <div className="col-span-2 rounded-lg bg-[#D2FFED] pt-2">
-          <h3 className="flex justify-center font-semibold capitalize text-[#53AA97]">
-            Berbagi
-          </h3>
-          <span className="-mt-[2px] flex justify-center text-[24px] font-semibold text-[#0A3D32]">
-            12
-          </span>
-        </div>
+        <PopUpShare />
       </div>
     </div>
   );
 }
-
-// GK BISA DIPANGGIL ke loading.tsx
-// Hasil.Skeleton = function HasilSkeleton() {
-//   return (
-//     <div className="p-4">
-//       <div className="space-y-3">
-//         <Skeleton className="h-5 w-2/5" />
-//         <Skeleton className="h-4 w-4/5" />
-//       </div>
-//     </div>
-//   );
-// };
 
 function AcaraFavorit() {
   return (
@@ -123,6 +113,39 @@ function BeliMerchendise() {
         <PopUpMerchendise />
       </div>
     </div>
+  );
+}
+
+function PopUpShare() {
+  return (
+    <Dialog>
+      <DialogTrigger className="col-span-2 w-full rounded bg-[#D2FFED] pt-2">
+        <div>
+          <h3 className="flex justify-center font-semibold capitalize text-[#53AA97]">
+            Berbagi
+          </h3>
+          <span className="-mt-[2px] flex justify-center text-[24px] font-semibold text-[#0A3D32]">
+            12
+          </span>
+        </div>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader className="pt-6">
+          <DialogTitle className="text-center">
+            <Balancer>Berbagi ke</Balancer>
+          </DialogTitle>
+          <div className="grid grid-cols-3 grid-rows-2 gap-3 pt-6">
+            <WhatsAppShare />
+            <FacebookShare />
+            <LinkedShare />
+            <PinterestShare />
+            <TwitterShare />
+            <CopyLink />
+          </div>
+          {/* kotak2 grid share */}
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }
 
