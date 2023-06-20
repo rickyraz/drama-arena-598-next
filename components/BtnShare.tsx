@@ -45,7 +45,7 @@ export function LinkedShare() {
         <p className="mx-2 my-2">
           <Image
             src="/iconshare/link.svg"
-            alt="icon-wa"
+            alt="icon-linked"
             width={240}
             height={240}
           />
@@ -67,7 +67,7 @@ export function FacebookShare() {
         <p className="mx-2 my-2">
           <Image
             src="/iconshare/fb.svg"
-            alt="icon-wa"
+            alt="icon-fb"
             width={240}
             height={240}
           />
