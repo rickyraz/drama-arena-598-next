@@ -65,7 +65,7 @@ function Nilai({ property }: Nilai) {
             <p className="ml-1">Komentar</p>
           </Button>
           <Button variant="default" className="bg-[#F9C97B] hover:bg-[#e8b35e]">
-            <p className="text-[#0D493C]">Kirimm</p>
+            <p className="text-[#0D493C]">Kirim</p>
           </Button>
         </div>
       </div>

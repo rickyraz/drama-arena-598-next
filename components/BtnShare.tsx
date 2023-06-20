@@ -11,9 +11,9 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const pathname = usePathname();
 
 export function WhatsAppShare() {
+  const pathname = usePathname();
   return (
     <div className=" bg-white">
       <WhatsappShareButton
@@ -36,6 +36,7 @@ export function WhatsAppShare() {
 }
 
 export function LinkedShare() {
+  const pathname = usePathname();
   return (
     <div className=" bg-white">
       <LinkedinShareButton
@@ -56,6 +57,7 @@ export function LinkedShare() {
 }
 
 export function FacebookShare() {
+  const pathname = usePathname();
   return (
     <div className=" bg-white">
       <FacebookShareButton
@@ -78,6 +80,7 @@ export function FacebookShare() {
 }
 
 export function TwitterShare() {
+  const pathname = usePathname();
   return (
     <div className=" bg-white">
       <TwitterShareButton
@@ -99,6 +102,7 @@ export function TwitterShare() {
 }
 
 export function PinterestShare() {
+  const pathname = usePathname();
   return (
     <div className=" bg-white">
       <PinterestShareButton
