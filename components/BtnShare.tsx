@@ -10,12 +10,15 @@ import { PinterestShareButton } from "next-share";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const pathname = usePathname();
+
 export function WhatsAppShare() {
   return (
     <div className=" bg-white">
       <WhatsappShareButton
-        url={"https://github.com/next-share"}
-        title={"next-share is a social share buttons for your next React apps."}
+        url={pathname}
+        title={"beri nilai acara drama arena 598 di Gontor 2 di website kami"}
         separator=":: "
         className="flex items-center justify-center"
       >
@@ -36,7 +39,7 @@ export function LinkedShare() {
   return (
     <div className=" bg-white">
       <LinkedinShareButton
-        url={"https://github.com/next-share"}
+        url={pathname}
         className="flex items-center justify-center"
       >
         <p className="mx-2 my-2">
@@ -56,8 +59,8 @@ export function FacebookShare() {
   return (
     <div className=" bg-white">
       <FacebookShareButton
-        url={"https://github.com/next-share"}
-        quote={"next-share is a social share buttons for your next React apps."}
+        url={pathname}
+        quote={"beri nilai acara drama arena 598 di Gontor 2 di website kami"}
         hashtag={"#nextshare"}
         className="flex items-center justify-center"
       >
@@ -78,8 +81,8 @@ export function TwitterShare() {
   return (
     <div className=" bg-white">
       <TwitterShareButton
-        url={"https://github.com/next-share"}
-        title={"next-share is a social share buttons for your next React apps."}
+        url={pathname}
+        title={"beri nilai acara drama arena 598 di Gontor 2 di website kami"}
         className="flex items-center justify-center"
       >
         <p className="mx-2 my-2">
@@ -99,8 +102,8 @@ export function PinterestShare() {
   return (
     <div className=" bg-white">
       <PinterestShareButton
-        url={"https://github.com/next-share"}
-        media={"next-share is a social share buttons for your next React apps."}
+        url={pathname}
+        media={"beri nilai acara drama arena 598 di Gontor 2 di website kami"}
         className="flex items-center justify-center"
       >
         <p className="mx-2 my-2">
