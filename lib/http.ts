@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // CREATING A " FETCH " WRAPPER
 
 import * as Effect from "@effect/io/Effect"
