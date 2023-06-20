@@ -19,6 +19,7 @@
     "@fp-ts/data": "^0.1.1",
     "@hookform/resolvers": "^3.1.1",
     "@prisma/client": "^4.15.0",
+    "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^1.2.2",
