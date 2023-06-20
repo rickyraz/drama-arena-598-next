@@ -36,9 +36,9 @@ function Filtering() {
           />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-          <SelectItem value="system">System</SelectItem>
+          <SelectItem value="modern">Modern</SelectItem>
+          <SelectItem value="drama">Drama</SelectItem>
+          <SelectItem value="drama-jenaka">Drama Jenaka</SelectItem>
         </SelectContent>
       </Select>
     </div>
